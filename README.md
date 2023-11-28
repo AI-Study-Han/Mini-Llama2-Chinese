@@ -24,7 +24,7 @@
 模型结构：max_seq_len = 512，dim = 1024，n_layers = 12，n_heads = 8。  
 指令微调数据：直接使用了[bell](https://huggingface.co/datasets/BelleGroup/train_1M_CN)、[alpaca-zh](https://huggingface.co/datasets/shibing624/alpaca-zh)的微调数据集，没有进行清洗。  
 指令微调轮数：2 epoch。  
-模型效果：这里随机抽取了[firefly](https://huggingface.co/datasets/YeungNLP/firefly-train-1.1M)指令微调数据集测试，[测试结果](https://huggingface.co/My521/Mini-Llama-Chinese/tree/main/model0)只能说是啥也不会，只是能生成汉字，语言随机，像一个刚出生的婴儿，慢慢成长吧。
+模型效果：这里随机抽取了1000条[firefly](https://huggingface.co/datasets/YeungNLP/firefly-train-1.1M)指令微调数据集测试，[测试结果](https://huggingface.co/My521/Mini-Llama-Chinese/tree/main/model0)只能说是啥也不会，只是能生成汉字，语言随机，像一个刚出生的婴儿，慢慢成长吧。
 
 
 ### model-1  

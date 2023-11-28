@@ -1,4 +1,4 @@
-# Mini-Llama-Chinese
+# Mini-Llama2-Chinese
 <p align="center">
   <img src="Mini-Llama2-Chinese.png" alt="Mini-Llama-Chinese" style="width:30%;">
 </p>

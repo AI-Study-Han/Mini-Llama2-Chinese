@@ -29,7 +29,7 @@
 
 ### model-1  
 模型预训练数据：英文文本108G，中文文本217G，中英翻译文本6G，token数量没有计算。  
-预训练轮数：1 epoch。
+预训练轮数：1 epoch。  
 模型结构：max_seq_len = 512，dim = 1024，n_layers = 16，n_heads = 16。  
 指令微调数据：    
 指令微调轮数：  
@@ -37,7 +37,7 @@
 
 ### model-2  
 模型预训练数据：英文文本318G，中文文本232G，token数量中文58 B，英文81 B，共约140 B token。  
-预训练轮数：1 epoch。
+预训练轮数：1 epoch。  
 模型结构：max_seq_len = 512，dim = 1024，n_layers = 16，n_heads = 16。  
 指令微调数据：    
 指令微调轮数：  
@@ -45,7 +45,7 @@
 
 ### model-3  
 模型预训练数据：与model-2相同。  
-预训练轮数：1 epoch。
+预训练轮数：1 epoch。  
 模型结构：max_seq_len = 512，dim = 1024，n_layers = 32，n_heads = 16。  
 指令微调数据：    
 指令微调轮数：  

@@ -31,22 +31,39 @@
 模型预训练数据：英文文本108G，中文文本217G，中英翻译文本6G，token数量没有计算。  
 预训练轮数：1 epoch。  
 模型结构：max_seq_len = 512，dim = 1024，n_layers = 16，n_heads = 16。  
-指令微调数据：    
-指令微调轮数：  
+指令微调数据：BELLE、GPT-4-LLM、MOSS、Firefly，使用n-gram、MinHash、LSH的方法进行去重，4261624条数据保留1245488个   
+指令微调轮数：1、2  
 模型效果：  
 
 ### model-2  
 模型预训练数据：英文文本318G，中文文本232G，token数量中文58 B，英文81 B，共约140 B token。  
 预训练轮数：1 epoch。  
 模型结构：max_seq_len = 512，dim = 1024，n_layers = 16，n_heads = 16。  
-指令微调数据：    
-指令微调轮数：  
+指令微调数据：与model1相同     
+指令微调轮数：与model1相同  
 模型效果：  
 
 ### model-3  
 模型预训练数据：与model-2相同。  
 预训练轮数：1 epoch。  
 模型结构：max_seq_len = 512，dim = 1024，n_layers = 32，n_heads = 16。  
-指令微调数据：    
-指令微调轮数：  
+指令微调数据：与model1相同    
+指令微调轮数：与model1相同  
 模型效果：  
+
+
+### model-4  
+只用中文试试效果
+模型预训练数据：中文百度百科和维基百科  
+预训练轮数：1 epoch。  
+模型结构：max_seq_len = 512，dim = 2048，n_layers = 20，n_heads = 16。  
+指令微调数据：  
+指令微调轮数：
+
+
+### model-5
+模型预训练数据：600多G中文文本，150多B token  
+预训练轮数：1 epoch。  
+模型结构：max_seq_len = 512，dim = 1536，n_layers = 32，n_heads = 24。  
+指令微调数据：  
+指令微调轮数：

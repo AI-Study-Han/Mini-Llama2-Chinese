@@ -10,12 +10,12 @@
 |:----:|:----:|:----:|
 |[model-0](#model-0)|维基百科中文、百度百科、医疗文本|[模型下载](https://huggingface.co/My521/Mini-Llama-Chinese)|
 |[model-0-sft](#model-0)|bell、alpaca-zh|[模型下载](https://huggingface.co/My521/Mini-Llama-Chinese) |  
-|[model-1](#model-1)|英文文本108G，中文文本217G，中英翻译文本6G| |
-|[model-1-sft](#model-1)| | | 
-|[model-2](#model-2)|英文文本318G，中文文本232G| |
-|[model-2-sft](#model-2)| |  | 
-|[model-3](#model-3)| 英文文本318G，中文文本232G| |
-|[model-3-sft](#model-3)| |  | 
+|[model-1](#model-1)|英文文本108G，中文文本217G，中英翻译文本6G|[模型下载](https://huggingface.co/My521/Mini-Llama-Chinese)|
+|[model-1-sft](#model-1)| |[模型下载](https://huggingface.co/My521/Mini-Llama-Chinese)| 
+|[model-2](#model-2)|英文文本318G，中文文本232G|[模型下载](https://huggingface.co/My521/Mini-Llama-Chinese)|
+|[model-2-sft](#model-2)| |[模型下载](https://huggingface.co/My521/Mini-Llama-Chinese)| 
+|[model-3](#model-3)| 英文文本318G，中文文本232G|[模型下载](https://huggingface.co/My521/Mini-Llama-Chinese)|
+|[model-3-sft](#model-3)| |[模型下载](https://huggingface.co/My521/Mini-Llama-Chinese)| 
 
 
 ### model-0  

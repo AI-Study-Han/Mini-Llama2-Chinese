@@ -14,7 +14,7 @@
 
 原开源代码没有使用deepspeed，我测试在batch = 8的，我的机器在600多G语料的情况下，训练时间需要大概480小时，再大的模型就需要调小batch，时间上难以接受，所以选择尝试使用deepspeed进行加速。  
 
-这里选择huggingface transformers进行训练，huggingface transformers可以很方便的集成deepspeed，并且内置了llama模型，可以由AutoModelForCausalLM直接导入，代码参考[Chinese-LLaMA-Alpaca-2](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2)进行修改得来，放在了code1文件夹中。  
+这里选择huggingface transformers进行训练，huggingface transformers可以很方便的集成deepspeed，并且内置了llama模型，可以由AutoModelForCausalLM直接导入，代码参考[Chinese-LLaMA-Alpaca-2](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2)进行修改得来，放在了**code1**文件夹中。  
 
 相同的数据，deepspeed zero 2，batch = 8，可以训练2.3B的模型，训练时间预计1160h，确实可以训练更大的模型。但是不清楚为什么调大batch显存占用并不会明显增加，总计消耗时间也不会明显减少。（batch = 1，单卡显存占用19G，预计耗时2500h；batch = 8，单卡显存占用20G，预计耗时1160h；batch = 16，单卡显存占用23G，预计耗时1100h；batch = 24，单卡显存占用30G，预计耗时1050h；batch = 32，单卡显存占用32G，预计耗时1050h；batch = 64，OOM）
 

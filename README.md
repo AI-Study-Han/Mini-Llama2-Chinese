@@ -6,7 +6,23 @@
 想要从零开始训练一个中文的mini大语言模型，目前的目标是学习和尝试使用各种方法训练和优化模型，最终训练一个较小的模型可以进行基本的对话，具体模型大小根据手头的机器决定。目前模型训练代码主要参考[baby-llama2-chinese](https://github.com/DLLXW/baby-llama2-chinese)，只是修改了部分参数，这里就不放代码了，后面如果对模型代码有较大的更改再上传。   
 
 **目前还在不断的学习和尝试中，后续会将训练好的模型整理、上传（上传的文件中有些日志中的编号与文件编号不一致，这是因为本地模型编号与开源不同，不影响）。大家有什么可以提高模型效果的建议可以留言，会选择进行尝试优化，训练完成后再上传上来，一起试试效果。目前上传了model0-3的模型，以及测试微调模型的效果**  
-目前model0还是什么都不能回答，model1和model2已经可以简单的回答一些问题了，至少生成的还像个人话，但是涉及计算和逻辑的问题还是完全不行。model3增大了模型尺寸，不知道为什么不行了。
+目前model0还是什么都不能回答，model1和model2已经可以简单的回答一些问题了，至少生成的还像个人话，但是涉及计算和逻辑的问题还是完全不行。model3增大了模型尺寸，不知道为什么不行了。  
+------2024/1/19  
+这里单卡显存占用占用的意思是每张卡显存占用，不是只有一张卡。  
+
+原开源代码没有使用deepspeed，我测试在batch = 8的，我的机器在600多G语料的情况下，训练时间需要大概480小时，再大的模型就需要调小batch，时间上难以接受，所以选择尝试使用deepspeed进行加速。  
+
+这里选择huggingface transformers进行训练，huggingface transformers可以很方便的集成deepspeed，并且内置了llama模型，可以由AutoModelForCausalLM直接导入，代码参考[Chinese-LLaMA-Alpaca-2](https://github.com/ymcui/Chinese-LLaMA-Alpaca-2)进行修改得来，放在了code1文件夹中。  
+
+相同的数据，deepspeed zero 2，batch = 8，可以训练2.3B的模型，训练时间预计1160h，确实可以训练更大的模型。但是不清楚为什么调大batch显存占用并不会明显增加，总计消耗时间也不会明显减少。（batch = 1，单卡显存占用19G，预计耗时2500h；batch = 8，单卡显存占用20G，预计耗时1160h；batch = 16，单卡显存占用23G，预计耗时1100h；batch = 24，单卡显存占用30G，预计耗时1050h；batch = 32，单卡显存占用32G，预计耗时1050h；batch = 64，OOM）
+
+测试4B的模型，batch = 16，单卡显存占用33G，预计耗时1550h。
+
+但是有个问题是使用transformers预置的llama模型，loss收敛很慢，1B模型，2000 step loss在6左右，之前自定义的代码训练，2000 step loss在4点多，并且后面loss收敛的也很慢。这个也没有找到什么原因。
+
+后面通过修改之前的开源model.py代码，可以集成到transformers使用Trainer进行训练，初步测试600G的训练数据，model5的参数，使用deepspeed zero2 + compile的方法，单卡显存占用37G，预计耗时216h，相当于节省55%训练时间，这里loss收敛也变正常了。（这部分修改代码后面给出）
+
+这里大概摸索出一条可行的训练模型的方法，后面固定一个可以接受的模型大小，重点测试数据对模型效果的影响。
 
 
 |模型名称|训练数据|模型下载地址|
@@ -21,7 +37,7 @@
 |[model-3-sft](#model-3)|去重后约100万条数据|[模型下载](https://huggingface.co/My521/Mini-Llama-Chinese)| 
 |[model-4](#model-4)|百度百科、维基百科，17G中文文本|[模型下载](https://huggingface.co/My521/Mini-Llama-Chinese)|
 |[model-4-sft](#model-4)||| 
-|[model-5](#model-5)| ||
+|[model-5](#model-5)|600G中文文本，包含百度百科、维基百科|[模型下载](https://huggingface.co/My521/Mini-Llama-Chinese)|
 |[model-5-sft](#model-5)| || 
 
 测试问题：

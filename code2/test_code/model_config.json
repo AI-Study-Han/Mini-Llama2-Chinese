@@ -1,0 +1,11 @@
+{
+  "max_seq_len": 1024,
+  "dim": 2048,
+  "intermediate_size": 11008,
+  "n_layers": 24,
+  "n_heads": 16,
+  "multiple_of": 32,
+  "vocab_size": 64798,
+  "tie_word_embeddings": false,
+  "use_bias": true
+}
